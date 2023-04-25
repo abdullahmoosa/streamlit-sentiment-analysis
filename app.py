@@ -75,7 +75,7 @@ if submit:
 st.write("")
 st.header("Exploratory Data Analysis of Twitter US Airline Sentiment Dataset")
 
-df = pd.read_csv("dataset\Processed_Tweets.csv")
+df = pd.read_csv("dataset/Processed_Tweets.csv")
 show_data = st.checkbox('Show data')
 if show_data:
     st.write(df.head(20))
