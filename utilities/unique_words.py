@@ -8,7 +8,7 @@ class UniqueWords:
         self.numwords = numwords
         self.raw_words = raw_words
         allother = []
-        for item in self.df[self.df.airline_sentiment != sentiment]['final_text']:
+        for item in self.df[self.df.sentiment != sentiment]['final_text']:
             # print(item)
             try:
                 for word in item.split():
@@ -21,7 +21,7 @@ class UniqueWords:
         
         mycounter = Counter()
         
-        for item in self.df[self.df.airline_sentiment == sentiment]['final_text']:
+        for item in self.df[self.df.sentiment == sentiment]['final_text']:
             try:
                 for word in item.split():
                     mycounter[word] += 1
