@@ -22,9 +22,11 @@ st.set_page_config(page_title="Tweets Extraction", layout="wide")
 contsant = Constants()
 prediction = GetPrediction()
 
-st.header("Sentiment Analysis")
+st.header("Twitter Sentiment Analysis")
 st.markdown("##### **Please Enter a valid user handle below :**")
 text = st.text_area('',height=5, key=10,) 
+st.markdown('###### Enter Number of Tweets (Max 50)')
+num_tweets = st.slider('', min_value= 1, max_value= 50)
 submit = st.button('Generate') 
 flag = False
 df = pd.DataFrame()
@@ -35,13 +37,14 @@ def load_data():
 if submit:
     with st.spinner('Loading...',):
         try:
-            output = asyncio.run(prediction.get_final_response(text= text))
+            output = asyncio.run(prediction.get_final_response(text= text, num_tweets= num_tweets))
         except Exception as e:
             st.error("Please try again after one hour... As this is a free web application. So we have our limitations.\n Again, thank you!")
             raise e
         flag = True
         output.to_csv('dataset/Tweets.csv', index= False,)
     df = load_data()
+    st.markdown('##### Extracted Tweets')
     st.write(df.head(10))
     tweets_df = pd.read_csv('dataset/Tweets.csv')
 

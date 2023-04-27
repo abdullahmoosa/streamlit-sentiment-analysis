@@ -27,15 +27,16 @@ class GetPrediction:
     dict["LABEL_2"] = "Positive"
 
 
-    async def get_final_response(self,text):
+    async def get_final_response(self,text, num_tweets):
         client = ApifyClient(contsant.apify)
         tweets = []
         self.text = text
+        self.num_tweets = num_tweets
         # Prepare the actor input
         run_input = {
             "handle": [text],
             "mode": "own",
-            "tweetsDesired": 50,
+            "tweetsDesired": num_tweets,
             "searchMode": "live",
             "profilesDesired": 1,
             "proxyConfig": { "useApifyProxy": True },
