@@ -4,14 +4,10 @@
 from textblob import TextBlob 
 import pandas as pd
 import streamlit as st
-import cleantext
-import requests
 import plotly.express as px
 import matplotlib.pyplot as plt
-from wordcloud import WordCloud, STOPWORDS, ImageColorGenerator
 import numpy as np
-from nltk.corpus import stopwords
-from collections import Counter
+
 import time
 from PIL import Image
 # from twitter_scraper import get_tweets
